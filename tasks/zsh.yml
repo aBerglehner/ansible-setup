@@ -1,0 +1,14 @@
+- name: Install ZSH
+  apt: name=zsh
+  tags:
+    - install
+    - productivity
+    - dotfiles
+    - zsh
+- name: Change shell to zsh
+  shell: chsh -s $(which zsh)
+  tags:
+    - install
+    - dotfiles
+    - productivity
+    - zsh
