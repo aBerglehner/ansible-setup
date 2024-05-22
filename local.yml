@@ -26,5 +26,5 @@
     - name: Include Utils tasks
       include_tasks: tasks/utils.yml
 
-    #- name: Install rust
-    #  include_tasks: tasks/rust.yml
+    - name: Install rust
+      include_tasks: tasks/rust.yml

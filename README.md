@@ -16,4 +16,4 @@
 
 # little work afterwards
 
-## run after_ansible_install.sh in dotfiles folder
+## chmod + x and run after_ansible_install.sh in ~/.dotfiles folder
