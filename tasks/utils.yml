@@ -1,0 +1,22 @@
+- name: Install packages
+  become: true
+  apt:
+    name: ["tmux", "curl", "fzf", "xclip", "tldr", "ripgrep"]
+  tags:
+    - install
+    - productivity
+
+- name: Download and install Starship
+  shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
+  args:
+    executable: /bin/sh
+  tags:
+    - install
+    - productivity
+- name: Download and install Zoxide
+  shell: curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+  args:
+    executable: /bin/sh
+  tags:
+    - install
+    - productivity

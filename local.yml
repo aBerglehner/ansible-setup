@@ -1,0 +1,30 @@
+- hosts: localhost
+  become: true
+  pre_tasks:
+    - name: Update all Debian/Ubuntu packages to their latest version
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+      tags:
+        - install
+        - dotfiles
+        - productivity
+        - zsh
+        - stow
+        - node
+        - rust
+  tasks:
+    - name: Include Zsh tasks
+      include_tasks: tasks/zsh.yml
+
+    #- name: Include Node tasks
+    #include_tasks: tasks/node.yml
+
+    - name: Include Dotfiles tasks
+      include_tasks: tasks/dotfiles.yml
+
+    - name: Include Utils tasks
+      include_tasks: tasks/utils.yml
+
+    #- name: Install rust
+    #include_tasks: tasks/rust.yml
