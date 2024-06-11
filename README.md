@@ -17,3 +17,9 @@
 # little work afterwards
 
 ## chmod + x and run after_ansible_install.sh in ~/.dotfiles folder
+
+## for fd you need to execute this line to use it as fd
+
+## ln -s $(which fdfind) ~/.local/bin/fd
+
+## also make sure that $HOME/.local/bin is in your $PATH

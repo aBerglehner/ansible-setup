@@ -1,0 +1,48 @@
+- name: Install java amazon corretto and make sure wget is installed
+  become: true
+  package:
+    name: wget
+    state: present
+  tags:
+    - install
+    - java
+
+- name: Download Corretto GPG key
+  ansible.builtin.command:
+    cmd: wget -O - https://apt.corretto.aws/corretto.key
+  register: corretto_key
+  tags:
+    - install
+    - java
+
+- name: Add Corretto GPG key to the keyring
+  ansible.builtin.command:
+    cmd: gpg --dearmor -o /usr/share/keyrings/corretto-keyring.gpg
+    stdin: "{{ corretto_key.stdout }}"
+  when: corretto_key.stdout is not none
+  tags:
+    - install
+    - java
+
+- name: Add Corretto repository
+  ansible.builtin.apt_repository:
+    repo: "deb [signed-by=/usr/share/keyrings/corretto-keyring.gpg] https://apt.corretto.aws stable main"
+    filename: "corretto"
+  tags:
+    - install
+    - java
+
+- name: Update APT package list
+  ansible.builtin.apt:
+    update_cache: yes
+  tags:
+    - install
+    - java
+
+- name: Install Amazon Corretto JDK
+  ansible.builtin.apt:
+    name: java-17-amazon-corretto-jdk
+    state: present
+  tags:
+    - install
+    - java

@@ -1,0 +1,73 @@
+- name: Ensure necessary packages are installed
+  apt:
+    name:
+      - curl
+      - tar
+    state: present
+    update_cache: yes
+  tags:
+    - install
+    - productivity
+
+- name: Get the latest LazyGit version
+  command: curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
+  register: github_response
+  tags:
+    - install
+    - productivity
+
+- name: Debug GitHub API response
+  debug:
+    var: github_response.stdout
+  tags:
+    - install
+    - productivity
+
+- name: Parse LazyGit version
+  set_fact:
+    lazygit_version: "{{ github_response.stdout | from_json | json_query('tag_name') | regex_replace('^v', '') }}"
+  tags:
+    - install
+    - productivity
+
+- name: Check if LazyGit tarball already exists
+  stat:
+    path: /tmp/lazygit.tar.gz
+  register: lazygit_tarball
+  tags:
+    - install
+    - productivity
+
+- name: Download LazyGit tarball
+  shell: |
+    curl -Lo /tmp/lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/latest/download/lazygit_{{ lazygit_version }}_Linux_x86_64.tar.gz"
+  when: not lazygit_tarball.stat.exists
+  tags:
+    - install
+    - productivity
+
+- name: Extract LazyGit
+  unarchive:
+    src: /tmp/lazygit.tar.gz
+    dest: /tmp
+    creates: /tmp/lazygit
+  tags:
+    - install
+    - productivity
+
+- name: Install LazyGit
+  copy:
+    src: /tmp/lazygit
+    dest: /usr/local/bin/lazygit
+    mode: "0755"
+  tags:
+    - install
+    - productivity
+
+- name: Clean up
+  file:
+    path: /tmp/lazygit*
+    state: absent
+  tags:
+    - install
+    - productivity
