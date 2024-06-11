@@ -27,11 +27,8 @@
     - name: Include Utils tasks
       include_tasks: tasks/utils.yml
 
-    - name: Include LazyGit tasks
-      include_tasks: tasks/lazygit.yml
+    #- name: Install rust
+    #  include_tasks: tasks/rust.yml
 
-    - name: Install rust
-      include_tasks: tasks/rust.yml
-
-    - name: Install Java Amazone corretto
-      include_tasks: tasks/java.yml
+    #- name: Install Java Amazone corretto
+    #  include_tasks: tasks/java.yml

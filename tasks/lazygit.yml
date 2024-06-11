@@ -1,14 +1,3 @@
-- name: Ensure necessary packages are installed
-  apt:
-    name:
-      - curl
-      - tar
-    state: present
-    update_cache: yes
-  tags:
-    - install
-    - productivity
-
 - name: Get the latest LazyGit version
   command: curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest"
   register: github_response
