@@ -14,17 +14,19 @@
         - node
         - rust
         - java
+        - maven
+        - lazygit
   tasks:
-    - name: Include Zsh tasks
+    - name: Include Zsh
       include_tasks: tasks/zsh.yml
 
-    #- name: Include Node tasks
+    #- name: Include Node
     #include_tasks: tasks/node.yml
 
-    - name: Include Dotfiles tasks
+    - name: Include Dotfiles
       include_tasks: tasks/dotfiles.yml
 
-    - name: Include Utils tasks
+    - name: Include Utils
       include_tasks: tasks/utils.yml
 
     #- name: Install rust
@@ -32,3 +34,9 @@
 
     #- name: Install Java Amazone corretto
     #  include_tasks: tasks/java.yml
+
+    #- name: Include LazyGit
+    #  include_tasks: tasks/lazygit.yml
+
+    - name: Include Maven
+      include_tasks: tasks/maven.yml

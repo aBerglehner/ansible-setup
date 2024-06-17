@@ -1,0 +1,8 @@
+- name: Install Maven
+  become: true
+  apt:
+    name: ["maven"]
+  tags:
+    - install
+    - java
+    - maven

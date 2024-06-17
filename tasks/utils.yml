@@ -44,6 +44,3 @@
   tags:
     - install
     - productivity
-
-- name: Include LazyGit tasks
-  include_tasks: lazygit.yml
