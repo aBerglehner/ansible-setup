@@ -13,7 +13,6 @@
         "curl",
         "git",
         "xclip",
-        "tldr",
         "ripgrep",
         "fd-find",
         "jq",

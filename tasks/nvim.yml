@@ -1,0 +1,51 @@
+- name: Install nvim
+  become: true
+  apt:
+    name:
+      [
+        "ninja-build",
+        "gettext",
+        "libtool",
+        "libtool-bin",
+        "autoconf",
+        "automake",
+        "cmake",
+        "g++",
+        "pkg-config",
+        "unzip",
+        "doxygen",
+      ]
+  tags:
+    - install
+    - productivity
+    - nvim
+
+- name: Download Neovim source code
+  get_url:
+    url: https://github.com/neovim/neovim/archive/refs/tags/v0.10.0.tar.gz
+    dest: /tmp/neovim-0.10.0.tar.gz
+  tags:
+    - install
+    - productivity
+    - nvim
+
+- name: Extract Neovim source code
+  unarchive:
+    src: /tmp/neovim-0.10.0.tar.gz
+    dest: /tmp
+  tags:
+    - install
+    - productivity
+    - nvim
+
+- name: Build Neovim from source
+  shell: |
+    cd /tmp/neovim-0.10.0
+    make CMAKE_BUILD_TYPE=Release
+    make install
+  args:
+    creates: /usr/local/bin/nvim
+  tags:
+    - install
+    - productivity
+    - nvim
