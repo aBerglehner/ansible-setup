@@ -1,0 +1,32 @@
+- name: Add PostgreSQL APT repository
+  become: true
+  shell: echo "deb http://apt.postgresql.org/pub/repos/apt {{ ansible_distribution_release }}-pgdg main" > /etc/apt/sources.list.d/pgdg.list
+  tags:
+    - install
+    - psql
+
+- name: Download and add PostgreSQL GPG key
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+  tags:
+    - install
+    - psql
+
+- name: Update apt cache
+  apt:
+    update_cache: yes
+  tags:
+    - install
+    - psql
+
+- name: Install PostgreSQL
+  apt:
+    name:
+      - postgresql
+      - postgresql-client
+    state: present
+    update_cache: yes
+  tags:
+    - install
+    - psql

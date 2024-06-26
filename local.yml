@@ -17,6 +17,7 @@
         - maven
         - lazygit
         - nvim
+        - psql
   tasks:
     - name: Include Zsh
       include_tasks: tasks/zsh.yml
@@ -42,8 +43,11 @@
     #- name: Include Maven
     #include_tasks: tasks/maven.yml
 
-    - name: Include nerdfont
-      include_tasks: tasks/nerd-font.yml
+    #- name: Include nerdfont
+    #  include_tasks: tasks/nerd-font.yml
 
-    - name: Include nvim / lazyvim
-      include_tasks: tasks/nvim.yml
+    #- name: Include nvim / lazyvim
+    #  include_tasks: tasks/nvim.yml
+
+    - name: Install postgres latest version
+      include_tasks: tasks/psql.yml
