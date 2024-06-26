@@ -49,3 +49,13 @@
     - install
     - productivity
     - nvim
+
+- name: Cloning my LazyVim repository
+  git:
+    repo: "https://github.com/aBerglehner/lazyvim"
+    dest: "~/.config/nvim"
+    update: yes
+  tags:
+    - install
+    - productivity
+    - nvim

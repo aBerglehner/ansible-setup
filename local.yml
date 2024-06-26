@@ -45,5 +45,5 @@
     - name: Include nerdfont
       include_tasks: tasks/nerd-font.yml
 
-    #- name: Include nvim / lazyvim
-    #  include_tasks: tasks/nvim.yml
+    - name: Include nvim / lazyvim
+      include_tasks: tasks/nvim.yml
