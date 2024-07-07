@@ -20,11 +20,11 @@
     - install
     - psql
 
-- name: Install PostgreSQL
+- name: Install PostgreSQL 13
   apt:
     name:
-      - postgresql
-      - postgresql-client
+      - postgresql-13
+      - postgresql-client-13
     state: present
     update_cache: yes
   tags:

@@ -1,0 +1,22 @@
+- name: Update APT package list
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+  tags:
+    - install
+    - productivity
+    - more-utils
+
+- name: Install packages
+  become: true
+  apt:
+    name:
+      [
+        "jq",
+        "tldr",
+        "htop",
+      ]
+  tags:
+    - install
+    - productivity
+    - more-utils

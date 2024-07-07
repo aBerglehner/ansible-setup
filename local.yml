@@ -18,12 +18,13 @@
         - lazygit
         - nvim
         - psql
+        - more-utils
   tasks:
     - name: Include Zsh
       include_tasks: tasks/zsh.yml
 
-    #- name: Include Node
-    #include_tasks: tasks/node.yml
+    - name: Include Node
+      include_tasks: tasks/node.yml
 
     - name: Include Dotfiles
       include_tasks: tasks/dotfiles.yml
@@ -31,23 +32,26 @@
     - name: Include Utils
       include_tasks: tasks/utils.yml
 
-    #- name: Install rust
-    #  include_tasks: tasks/rust.yml
+    - name: Install rust
+      include_tasks: tasks/rust.yml
 
-    #- name: Install Java Amazone corretto
-    #  include_tasks: tasks/java.yml
+    - name: Install Java Amazone corretto
+      include_tasks: tasks/java.yml
 
-    #- name: Include LazyGit
-    #  include_tasks: tasks/lazygit.yml
+    - name: Include LazyGit
+      include_tasks: tasks/lazygit.yml
 
-    #- name: Include Maven
-    #include_tasks: tasks/maven.yml
+    - name: Include Maven
+      include_tasks: tasks/maven.yml
 
-    #- name: Include nerdfont
-    #  include_tasks: tasks/nerd-font.yml
+    - name: Include nerdfont
+      include_tasks: tasks/nerd-font.yml
 
-    #- name: Include nvim / lazyvim
-    #  include_tasks: tasks/nvim.yml
+    - name: Include nvim / lazyvim
+      include_tasks: tasks/nvim.yml
 
-    - name: Install postgres latest version
+    - name: Install postgres
       include_tasks: tasks/psql.yml
+
+    - name: Install more utils
+      include_tasks: tasks/more-utils.yml

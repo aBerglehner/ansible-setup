@@ -50,6 +50,7 @@
     - productivity
     - lazygit
 
+- name: Copy LazyGit to /usr/local/bin
   copy:
     src: /tmp/lazygit
     dest: /usr/local/bin/lazygit

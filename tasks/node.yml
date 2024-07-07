@@ -1,9 +1,18 @@
+- name: Update APT package list
+  become: true
+  ansible.builtin.apt:
+    update_cache: yes
+  tags:
+    - install
+    - node
+
 - name: Install nodejs and npm
   apt:
     name: ["nodejs", "npm"]
   tags:
     - install
     - node
+
 - name: Install N
   npm:
     name: n
@@ -11,6 +20,7 @@
   tags:
     - install
     - node
+
 - name: Install correct version of Node
   shell: n 18
   tags:

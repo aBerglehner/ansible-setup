@@ -15,8 +15,6 @@
         "xclip",
         "ripgrep",
         "fd-find",
-        "jq",
-        "tldr",
         "wget",
         "protobuf-compiler",
         "tar",
